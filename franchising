@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity 0.6.10;
+
+contract Franchising {
+    
+    string public franqueador;
+    string public franqueado;
+    uint256 private valorFixo;
+    uint256 private royaltyFee;
+   
+    constructor (
+            string memory _franqueador,
+            string memory _franqueado,
+            uint256 valorDaTaxaMensal,
+            uint256 percentualMensal
+        )
+    public 
+    {
+        franqueador = _franqueador;
+        franqueado = _franqueado;
+        valorFixo = valorDaTaxaMensal;
+        royaltyFee = percentualMensal;
+    }
+    
+    function valorAtualFixo () public view returns (uint256) {
+        return valorFixo;
+    }
+    function valorSobreOLucro () public view returns (uint256) {
+        return royaltyFee;
+    }
+     function reajustaPercentualMensal (uint256 percentualReajuste) public
+     {
+         if (percentualReajuste > 10)
+         {
+             percentualReajuste = 10;
+         }
+         uint256 valorDoAcrescimo = 0;
+         valorDoAcrescimo = ((royaltyFee*percentualReajuste)/100);
+         royaltyFee = royaltyFee + valorDoAcrescimo;
+     }
+}
