@@ -30,9 +30,13 @@ contract RequerimentoDeArbitragem
 
     function pagarCamara() public payable 
     {
-        require(msg.value>=valor, "Valor insuficiente");
+        require(msg.value==valor, "Valor incorreto");
         contaCamaraDeArbitragem.transfer(msg.value);
         statusPagamento = true;
     }
-   
+    
+    function dataDoProtocolo() public view returns (uint256) 
+    {
+        return dataDeProtocolo;
+    }
 }
