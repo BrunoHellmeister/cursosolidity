@@ -15,11 +15,11 @@ contract RequerimentoDeArbitragem
     bool public statusPagamento;
     address payable public contaCamaraDeArbitragem;
 
-    constructor(string memory nomeAutarquiaPublica, string memory nomeAdministrado, address payable _contaCamaraArb, uint256 valorDaDisputa) public 
+    constructor(string memory nomeAutarquiaPublica, string memory nomeAdministrado, address payable _contaCamaraArb, uint256 despesasDaDisputa) public 
     {
         administracaoPublica = nomeAutarquiaPublica;
         empresaPrivada = nomeAdministrado;
-        valor = valorDaDisputa;
+        valor = despesasDaDisputa;
         contaCamaraDeArbitragem = _contaCamaraArb;
     }
  
